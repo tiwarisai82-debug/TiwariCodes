@@ -58,8 +58,8 @@ Here are some projects I'm working on:
 ## 🤝 Connect With Me
 
 - 💼 GitHub: [@tiwarisai](https://github.com/tiwarisai)
-- 🌐 Portfolio: Add your portfolio website link here
-- 📧 Email: Add your professional email here
+- 🌐 Portfolio: https://tiwarisai82-debug.github.io/TiwariCodes/agecalculater.html
+- 📧 Email: tiwarisai82@gmail.com
 
 ---
 
