@@ -1,0 +1,304 @@
+ <style>
+      /* ===== Google Font ===== */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+      /* ===== Reset ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ===== Animated Background ===== */
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(-45deg, #050816, #111936, #160b2d, #061b2b);
+        background-size: 400% 400%;
+        animation: bgMove 12s ease infinite;
+        overflow-x: hidden;
+        color: #fff;
+      }
+
+      @keyframes bgMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* ===== Calculator Container ===== */
+      .container {
+        position: relative;
+        width: 100%;
+        max-width: 430px;
+        padding: 40px 32px;
+        text-align: center;
+        border-radius: 24px;
+        background: rgba(12, 18, 40, 0.78);
+        border: 1px solid rgba(0, 247, 255, 0.45);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        box-shadow:
+          0 0 15px rgba(0, 247, 255, 0.18),
+          0 0 45px rgba(0, 247, 255, 0.12),
+          inset 0 0 20px rgba(255, 255, 255, 0.025);
+
+        animation:
+          cardEnter 1s ease both,
+          cardGlow 3s ease-in-out infinite alternate;
+
+        transition: transform 0.4s ease;
+      }
+
+      .container:hover {
+        transform: translateY(-6px);
+      }
+
+      @keyframes cardEnter {
+        from {
+          opacity: 0;
+          transform: translateY(50px) scale(0.92);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes cardGlow {
+        from {
+          border-color: rgba(0, 247, 255, 0.35);
+          box-shadow: 0 0 15px rgba(0, 247, 255, 0.12);
+        }
+        to {
+          border-color: rgba(0, 247, 255, 0.85);
+          box-shadow:
+            0 0 20px rgba(0, 247, 255, 0.25),
+            0 0 45px rgba(0, 247, 255, 0.12);
+        }
+      }
+
+      /* ===== Heading ===== */
+      .container h1 {
+        font-size: clamp(28px, 6vw, 36px);
+        font-weight: 800;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+
+        background: linear-gradient(90deg, #00f7ff, #8b5cf6, #ff4ecd, #00f7ff);
+        background-size: 250% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        animation: titleShine 4s linear infinite;
+      }
+
+      @keyframes titleShine {
+        to {
+          background-position: 250% center;
+        }
+      }
+
+      /* ===== Birthdate Label ===== */
+      .container label {
+        display: inline-block;
+        margin-bottom: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        color: #d5e7ff;
+        animation: fadeIn 1.2s ease both;
+      }
+
+      /* ===== Date Input ===== */
+      .container input[type="date"] {
+        width: 100%;
+        padding: 14px 12px;
+        margin: 4px 0 25px;
+
+        font-family: inherit;
+        font-size: 14px;
+        color: #ffffff;
+
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(0, 247, 255, 0.4);
+        border-radius: 12px;
+        outline: none;
+
+        color-scheme: dark;
+
+        transition:
+          border-color 0.35s ease,
+          box-shadow 0.35s ease,
+          background 0.35s ease,
+          transform 0.35s ease;
+      }
+
+      .container input[type="date"]:hover {
+        border-color: #00f7ff;
+        background: rgba(0, 247, 255, 0.06);
+      }
+
+      .container input[type="date"]:focus {
+        border-color: #00f7ff;
+        box-shadow:
+          0 0 0 3px rgba(0, 247, 255, 0.12),
+          0 0 20px rgba(0, 247, 255, 0.2);
+        transform: scale(1.02);
+      }
+
+      /* ===== Calculate Button ===== */
+      .container button {
+        position: relative;
+        width: 100%;
+        padding: 15px 20px;
+        overflow: hidden;
+
+        border: none;
+        border-radius: 12px;
+        outline: none;
+
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: #06101b;
+
+        background: linear-gradient(100deg, #00f7ff, #7df9ff, #a78bfa);
+        background-size: 200% auto;
+
+        cursor: pointer;
+
+        box-shadow: 0 5px 20px rgba(0, 247, 255, 0.22);
+
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          background-position 0.5s ease;
+
+        animation: fadeIn 1.4s ease both;
+      }
+
+      .container button:hover {
+        transform: translateY(-4px) scale(1.02);
+        background-position: right center;
+        box-shadow:
+          0 8px 28px rgba(0, 247, 255, 0.4),
+          0 0 15px rgba(167, 139, 250, 0.25);
+      }
+
+      .container button:active {
+        transform: scale(0.96);
+      }
+
+      /* Button shine effect */
+      .container button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -120%;
+        width: 70%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        transform: skewX(-25deg);
+      }
+
+      .container button:hover::before {
+        animation: buttonShine 0.8s ease;
+      }
+
+      @keyframes buttonShine {
+        to {
+          left: 150%;
+        }
+      }
+
+      /* ===== Age Result ===== */
+      .container #result {
+        min-height: 24px;
+        margin-top: 25px;
+        padding: 0;
+        color: #00f7ff;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+        transition: all 0.3s ease;
+      }
+
+      .container #result:not(:empty) {
+        padding: 16px 12px;
+        border: 1px solid rgba(0, 247, 255, 0.35);
+        border-radius: 12px;
+        background: rgba(0, 247, 255, 0.06);
+        box-shadow: inset 0 0 15px rgba(0, 247, 255, 0.04);
+        animation: resultEnter 0.6s ease both;
+      }
+
+      @keyframes resultEnter {
+        from {
+          opacity: 0;
+          transform: translateY(15px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* ===== General Animation ===== */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== Mobile Responsive ===== */
+      @media (max-width: 480px) {
+        .container {
+          padding: 32px 22px;
+          border-radius: 20px;
+        }
+
+        .container h1 {
+          margin-bottom: 24px;
+        }
+
+        .container button {
+          font-size: 15px;
+        }
+      }
+
+      /* ===== Accessibility ===== */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
