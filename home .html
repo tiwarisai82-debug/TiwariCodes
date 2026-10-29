@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated login from</title>
+  </head>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(-45deg, #050816, #111936, #160b2d, #061b2b);
+      background-size: 400% 400%;
+      animation: bgMove 12s ease infinite;
+      overflow-x: hidden;
+      color: #fff;
+    }
+
+    @keyframes bgMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      width: 500px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    h2 {
+      text-transform: uppercase;
+      color: white;
+      padding: 20px 0;
+      font-size: 2em;
+    }
+    .form-group {
+      position: relative;
+      width: 330px;
+      margin: 30px 0;
+      border-bottom: 3px solid white;
+    }
+    .form-group input {
+      width: 100px;
+      height: 50px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 1.2em;
+      color: white;
+      padding: 0 30px 0 10px;
+    }
+    .form-group label {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+      color: white;
+      transition: 0.5s;
+    }
+    input:focus ~ label,
+    input:valid ~ label {
+      top: -5px;
+    }
+    p {
+      text-align: center;
+      color: white;
+      padding: 10px 0;
+    }
+    p > a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    p > a:hover {
+      text-decoration: underline;
+      font-style: italic;
+    }
+    #btn {
+      width: 100%;
+      height: 50px;
+      border-radius: 40px;
+      border: none;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+    #btn:hover {
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+    #btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      background: #22c55e;
+      transition: 0.4s;
+      z-index: -1;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h2>Login</h2>
+      <form action="">
+        <div class="form-group">
+          <input type="email" required />
+          <label for=""> Email</label>
+        </div>
+        <div class="form-group">
+          <input type="password" required />
+          <label for=""> Password</label>
+        </div>
+        <p>
+          <input type="checkbox" /> Remember Me
+          <a href="http://127.0.0.1:5500/forgetpass.html#"> Forget Password</a>
+        </p>
+        <input
+          id="btn"
+          onclick="
+            document.location = 'https://www.youtube.com/@___sai243/videos'
+          "
+          type="button"
+          value="Login"
+        />
+        <p>Don't have a account? <a href="#">Register</a></p>
+      </form>
+    </div>
+  </body>
+</html>
