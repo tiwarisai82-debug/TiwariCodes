@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #fff;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f15153;
+            box-shadow: 0 0 20px #fff;
+        }
+        .card-data{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #fff;
+            font-weight: 600;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+        .quantity-card{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 10px;
+
+            
+        }
+        .card-btn{
+            padding: 10px 25px;
+            border:0;
+            border-radius: 10px;
+            background-color: #5865f2;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 7px #303a9e;
+            transition:.15s;
+            margin: 0 20px;
+        }
+        .card-btn:hover{
+            transform: translateY(5px);
+            box-shadow:0 2px #303a9e;
+        }
+        h2{
+            color: #321847;
+            font-size: 30px;
+            font-family: 'Times New Roman', Times, serif;
+            margin-bottom: 20px;
+        }
+        .rest{
+            background-color: #5865f2;
+            border-radius: 50px;
+            padding: 5px 20px;
+            font-size: 25px;
+            cursor: pointer;
+            margin: 7px 22px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 600;
+            transition: .15s;
+
+
+        }
+        .rest:hover{
+            transform: translateY(5px);
+            box-shadow:0 2px #303a9e;
+        }
+    </style>
+    <script>
+        
+          var n =1;
+    window.onload=function(){
+        //alert(n.toString().padStart(2, '0'));
+  document.getElementById('myvalue').innerText=n.toString().padStart(2, '0');    
+ 
+    }
+ 
+ 
+    function myHandler(data,opt){      
+if(opt=='minus')
+{
+    data--;
+}
+else if(opt=='reset')
+{
+    data=0;
+}
+else{
+data++;
+}
+n=data;
+ 
+ 
+ document.getElementById('myvalue').innerText=data.toString().padStart(2, '0');
+    }
+
+        
+        
+
+    </script>
+</head>
+<div>
+
+<body>
+    <div class="container">
+        <h2>Quantity Selector</h2>
+        <h2> HTML | CSS | JavaScript</h2>
+        <div class="quantity-card"> 
+          <button  class="card-btn btnm" onclick="myHandler(n,'minus')"> <span> &minus;</span> </button>
+                <div class="card-data">
+                    <span id="myvalue"> </span>
+                </div>
+            <button  class="card-btn btnm" onclick="myHandler(n,'plus')"> <span> &plus; </span> </button>
+
+       </div>
+       <button class="rest" onclick="myHandler(0,'reset')"> Reset </button>
+    </div>
+    
+</body>
+</html>
