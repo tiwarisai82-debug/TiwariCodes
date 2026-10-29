@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculator</title>
+
+    <style>
+        input[type="text"] {
+            outline: none;
+            padding: 10px;
+            width: 75%;
+            border-radius: 10px;
+            margin-bottom: 5%;
+            border: none;
+        }
+
+        input[type="text"]:focus {
+            box-shadow: 0px 0px 5px 5px #08428c;
+        }
+
+        button {
+            padding: 10px;
+            width: 45%;
+            border-radius: 10px;
+            margin: 5px;
+            border: none;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: #08428c;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5c6795;
+        }
+
+        .container {
+            padding: 5% 3%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px 5px #08428c;
+            text-align: center;
+            width: 350px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f8ff;
+        }
+
+        h2, h3 {
+            background: linear-gradient(to left, #08428c, #0d518c);
+            text-transform: capitalize;
+            letter-spacing: 3px;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #myres {
+            color: #08428c;
+        }
+    </style>
+
+    <script>
+
+        function calculate(operation) {
+
+            var num1 = document.getElementById("txtnum1");
+            var num2 = document.getElementById("txtnum2");
+            var myres = document.getElementById("myres");
+
+            if (num1.value == "" || num2.value == "") {
+
+                if (num1.value == "") {
+                    num1.style.border = "2px solid red";
+                    num1.focus();
+                }
+
+                if (num2.value == "") {
+                    num2.style.border = "2px solid red";
+                }
+
+                myres.innerText = "Please enter both numbers";
+                return;
+            }
+
+            num1.style.border = "1px solid gray";
+            num2.style.border = "1px solid gray";
+
+            var n1 = Number(num1.value);
+            var n2 = Number(num2.value);
+
+            var res;
+
+            if (operation == "add") {
+                res = n1 + n2;
+            }
+
+            else if (operation == "sub") {
+                res = n1 - n2;
+            }
+
+            else if (operation == "multi") {
+                res = n1 * n2;
+            }
+
+            else if (operation == "div") {
+
+                if (n2 == 0) {
+                    myres.innerText = "Cannot divide by zero";
+                    return;
+                }
+
+                res = n1 / n2;
+            }
+
+            myres.innerText = "Result = " + res;
+
+            num1.value = "";
+            num2.value = "";
+
+            num1.focus();
+        }
+
+
+        function onlyNumberKey(evt) {
+
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+
+            if (ASCIICode >= 48 && ASCIICode <= 57) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>HTML CSS JavaScript</h2>
+
+        <input
+            type="text"
+            id="txtnum1"
+            autofocus
+            placeholder="Enter a Number"
+            maxlength="3"
+            onkeypress="return onlyNumberKey(event)"
+        >
+
+        <input
+            type="text"
+            id="txtnum2"
+            placeholder="Enter a Number"
+            maxlength="3"
+            onkeypress="return onlyNumberKey(event)"
+        >
+
+        <br>
+
+        <button onclick="calculate('add')">Add +</button>
+
+        <button onclick="calculate('sub')">Sub -</button>
+
+        <button onclick="calculate('multi')">Multi ×</button>
+
+        <button onclick="calculate('div')">Div ÷</button>
+
+        <h3 id="myres"></h3>
+
+    </div>
+
+</body>
+</html>
