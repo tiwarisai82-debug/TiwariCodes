@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --red: #ff2020;
+      --black: #080808;
+      --card: #151515;
+      --white: #ffffff;
+      --gray: #aaaaaa;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* Navbar */
+
+    header {
+      width: 100%;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #080808;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      text-decoration: none;
+      color: white;
+      font-size: 27px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .logo span {
+      display: block;
+    }
+
+    .logo small {
+      color: var(--red);
+      font-size: 11px;
+      letter-spacing: 4px;
+    }
+
+    nav {
+      display: flex;
+      gap: 27px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--red);
+      box-shadow: 0 0 20px #ff0000ee;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 50px;
+      padding: 5px 10px;
+    }
+
+    .nav-btn,
+    .primary-btn {
+      text-decoration: none;
+      background: var(--red);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .primary-btn:hover,
+    .nav-btn:hover {
+      background: white;
+      color: red;
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px #f80202e7;
+      font-weight: 700;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: none;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 80px 8%;
+      background:
+        linear-gradient(90deg, #000 10%, #000c 48%, #0003),
+        url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1800")
+          center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      animation: fadeUp 1s ease;
+    }
+
+    .tag {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 8vw, 100px);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+      font-size: 0.68em;
+    }
+
+    .description {
+      color: #ddd;
+      margin: 25px 0;
+      max-width: 450px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .secondary-btn {
+      color: white;
+      text-decoration: none;
+      border: 1px solid white;
+      border-radius: 30px;
+      padding: 12px 22px;
+      transition: 0.3s;
+    }
+
+    .secondary-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .stats {
+      display: flex;
+      gap: 50px;
+      margin-top: 50px;
+    }
+
+    .stats div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stats strong {
+      color: var(--red);
+      font-size: 25px;
+    }
+
+    .stats small {
+      color: #ccc;
+    }
+
+    /* Common Section */
+
+    .section {
+      padding: 90px 8%;
+    }
+
+    .heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .heading h2,
+    .about h2 {
+      font-size: clamp(30px, 4vw, 45px);
+      margin-bottom: 10px;
+    }
+
+    .heading h2 span,
+    .about h2 span {
+      color: var(--red);
+    }
+
+    .heading p:last-child {
+      color: var(--gray);
+    }
+
+    /* About */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 420px;
+      border-radius: 15px;
+      background: url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=900")
+        center/cover;
+    }
+
+    .about-content > p:not(.tag) {
+      color: var(--gray);
+      line-height: 1.9;
+      margin: 20px 0;
+    }
+
+    .about ul {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .about li {
+      margin: 13px 0;
+      color: #ddd;
+    }
+
+    /* Services */
+
+    .services {
+      background: #0e0e0e;
+    }
+
+    .service-grid,
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .service-card,
+    .equipment-card {
+      background: var(--card);
+      border: 1px solid #292929;
+      border-radius: 14px;
+      padding: 35px 20px;
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .service-card:hover,
+    .equipment-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--red);
+      box-shadow: 0 0 25px #f71202fa;
+    }
+
+    .service-icon {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3,
+    .equipment-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .service-card p,
+    .equipment-card p {
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* Equipment */
+
+    .equipment-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .equipment-card {
+      padding: 50px 20px;
+    }
+
+    /* Gallery */
+
+    .gallery {
+      background: #0e0e0e;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid #333;
+      transition: 0.4s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+      border-color: var(--red);
+    }
+
+    /* Contact */
+
+    .contact-box {
+      max-width: 600px;
+      margin: auto;
+      background: var(--card);
+      border: 1px solid #333;
+      padding: 45px 25px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-size: 27px;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .contact-box p {
+      color: #ccc;
+      margin: 15px;
+    }
+
+    .contact-box .primary-btn {
+      margin-top: 20px;
+    }
+
+    /* Footer */
+
+    footer {
+      background: #050505;
+      text-align: center;
+      padding: 35px 15px;
+      border-top: 1px solid #222;
+    }
+
+    footer h2 {
+      margin-bottom: 15px;
+    }
+
+    footer span {
+      color: var(--red);
+    }
+
+    footer p {
+      color: var(--gray);
+      font-size: 13px;
+      margin: 8px;
+    }
+
+    /* Animation */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      nav {
+        gap: 12px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 15px 5%;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      nav {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #101010;
+        flex-direction: column;
+        padding: 20px;
+        display: none;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 570px;
+        padding: 60px 6%;
+        background-position: center;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        min-height: 280px;
+      }
+
+      .section {
+        padding: 65px 6%;
+      }
+
+      .equipment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+
+    // Mobile Menu
+    menuBtn.addEventListener("click", () => {
+      nav.classList.toggle("active");
+
+      menuBtn.textContent = nav.classList.contains("active") ? "✕" : "☰";
+    });
+
+    // Close menu after clicking a link
+    document.querySelectorAll("#nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    // Scroll animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      },
+    );
+
+    document
+      .querySelectorAll(
+        ".service-card, .equipment-card, .about-content, .gallery-grid img",
+      )
+      .forEach((item) => {
+        item.style.opacity = "0";
+        item.style.transform = "translateY(30px)";
+        item.style.transition = "all 0.7s ease";
+        observer.observe(item);
+      });
+  </script>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiwari Live Sound | Poha</title>
+    <link rel="stylesheet" href="loginstyle.css" />
+    <script src="loginjs.js" defer></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <a href="#home" class="logo">
+        <span>TIWARI</span>
+        <small>LIVE SOUND</small>
+      </a>
+
+      <nav id="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#equipment">Equipment</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="nav-btn">Book Now</a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="tag">QUALITY OF SOUND</p>
+
+        <h1>
+          TIWARI<br />
+          <span>LIVE SOUND</span>
+        </h1>
+
+        <p class="description">
+          हर Event के लिए बेहतरीन Sound Quality और Professional Audio Setup.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#contact" class="primary-btn">Book Your Event ↗</a>
+          <a href="#about" class="secondary-btn">Explore More</a>
+        </div>
+
+        <div class="stats">
+          <div><strong>DJ</strong><small>Sound</small></div>
+          <div><strong>LIVE</strong><small>Programs</small></div>
+          <div><strong>PRO</strong><small>Setup</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about section" id="about">
+      <div class="about-image"></div>
+
+      <div class="about-content">
+        <p class="tag">ABOUT OUR BUSINESS</p>
+        <h2>Welcome To <span>Tiwari Live Sound</span></h2>
+
+        <p>
+          Welcome to Tiwari Live Sound (Poha). हम आपको बेहतरीन Sound Quality,
+          Professional Speakers, Mixing Console और Event Sound Setup प्रदान करते
+          हैं।
+        </p>
+
+        <ul>
+          <li>✓ Professional Sound System</li>
+          <li>✓ High Quality Speakers</li>
+          <li>✓ Experienced Sound Setup</li>
+          <li>✓ Quality Audio Experience</li>
+        </ul>
+
+        <a href="#contact" class="primary-btn">Contact Us ↗</a>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services" id="services">
+      <div class="heading">
+        <p class="tag">WHAT WE PROVIDE</p>
+        <h2>Our <span>Services</span></h2>
+        <p>Professional Sound For Every Occasion</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">🔊</div>
+          <h3>DJ Sound</h3>
+          <p>Powerful Sound System For DJ Events.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎤</div>
+          <h3>Live Programs</h3>
+          <p>Clear Audio For Live Performances.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💍</div>
+          <h3>Wedding Events</h3>
+          <p>Professional Wedding Sound Setup.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎧</div>
+          <h3>Stage Shows</h3>
+          <p>Complete Stage Audio Arrangements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipment -->
+    <section class="section equipment" id="equipment">
+      <div class="heading">
+        <p class="tag">OUR SOUND GEAR</p>
+        <h2>Our <span>Equipment</span></h2>
+      </div>
+
+      <div class="equipment-grid">
+        <div class="equipment-card">
+          <h3>PAUDIO Speakers</h3>
+          <p>15 Inch Professional Speaker System</p>
+        </div>
+
+        <div class="equipment-card">
+          <h3>Yamaha MG16XU</h3>
+          <p>Professional Audio Mixing Console</p>
+        </div>
+
+        <div class="equipment-card">
+          <h3>Professional Mics</h3>
+          <p>Microphones For Live Performance</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section gallery" id="gallery">
+      <div class="heading">
+        <p class="tag">OUR WORK</p>
+        <h2>Sound <span>Gallery</span></h2>
+      </div>
+
+      <div class="gallery-grid">
+        <img
+          src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=700"
+          alt="Concert"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=700"
+          alt="Live event"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=700"
+          alt="Audio studio"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=700"
+          alt="Stage show"
+        />
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="heading">
+        <p class="tag">GET IN TOUCH</p>
+        <h2>Book Your <span>Event</span></h2>
+        <p>Let's Make Your Event Sound Amazing!</p>
+      </div>
+
+      <div class="contact-box">
+        <h3>TIWARI LIVE SOUND</h3>
+        <p>📍 Poha, Maharashtra</p>
+        <p>📞 Contact us for event booking</p>
+
+        <a href="https://wa.me/9356502918" class="primary-btn" target="_blank">
+          WhatsApp Now ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <h2>TIWARI <span>LIVE SOUND</span></h2>
+      <p>Quality Of Sound | Tiwari Live Sound (Poha)</p>
+      <p>© 2026 Tiwari Live Sound. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
